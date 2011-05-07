@@ -3,380 +3,590 @@ test88c.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         0000002e  00800100  00000170  000001e4  2**0
+  0 .data         0000007a  00800100  00000298  0000032c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000170  00000000  00000000  00000074  2**1
+  1 .text         00000298  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .debug_aranges 00000020  00000000  00000000  00000212  2**0
+  2 .bss          00000001  0080017a  0080017a  000003a6  2**0
+                  ALLOC
+  3 .debug_aranges 00000020  00000000  00000000  000003a6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  3 .debug_pubnames 00000086  00000000  00000000  00000232  2**0
+  4 .debug_pubnames 000000b3  00000000  00000000  000003c6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_info   00000297  00000000  00000000  000002b8  2**0
+  5 .debug_info   00000266  00000000  00000000  00000479  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_abbrev 00000197  00000000  00000000  0000054f  2**0
+  6 .debug_abbrev 0000017b  00000000  00000000  000006df  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_line   00000265  00000000  00000000  000006e6  2**0
+  7 .debug_line   00000312  00000000  00000000  0000085a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_frame  00000080  00000000  00000000  0000094c  2**2
+  8 .debug_frame  000000b0  00000000  00000000  00000b6c  2**2
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    0000012e  00000000  00000000  000009cc  2**0
+  9 .debug_str    00000114  00000000  00000000  00000c1c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    000000a4  00000000  00000000  00000afa  2**0
+ 10 .debug_loc    000000ed  00000000  00000000  00000d30  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000018  00000000  00000000  00000b9e  2**0
+ 11 .debug_ranges 00000018  00000000  00000000  00000e1d  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
-   0:	19 c0       	rjmp	.+50     	; 0x34 <__ctors_end>
-   2:	2b c0       	rjmp	.+86     	; 0x5a <__bad_interrupt>
-   4:	2a c0       	rjmp	.+84     	; 0x5a <__bad_interrupt>
-   6:	29 c0       	rjmp	.+82     	; 0x5a <__bad_interrupt>
-   8:	28 c0       	rjmp	.+80     	; 0x5a <__bad_interrupt>
-   a:	27 c0       	rjmp	.+78     	; 0x5a <__bad_interrupt>
-   c:	26 c0       	rjmp	.+76     	; 0x5a <__bad_interrupt>
-   e:	25 c0       	rjmp	.+74     	; 0x5a <__bad_interrupt>
-  10:	24 c0       	rjmp	.+72     	; 0x5a <__bad_interrupt>
-  12:	23 c0       	rjmp	.+70     	; 0x5a <__bad_interrupt>
-  14:	22 c0       	rjmp	.+68     	; 0x5a <__bad_interrupt>
-  16:	21 c0       	rjmp	.+66     	; 0x5a <__bad_interrupt>
-  18:	20 c0       	rjmp	.+64     	; 0x5a <__bad_interrupt>
-  1a:	1f c0       	rjmp	.+62     	; 0x5a <__bad_interrupt>
-  1c:	1e c0       	rjmp	.+60     	; 0x5a <__bad_interrupt>
-  1e:	1d c0       	rjmp	.+58     	; 0x5a <__bad_interrupt>
-  20:	1c c0       	rjmp	.+56     	; 0x5a <__bad_interrupt>
-  22:	1b c0       	rjmp	.+54     	; 0x5a <__bad_interrupt>
-  24:	58 c0       	rjmp	.+176    	; 0xd6 <__vector_18>
-  26:	19 c0       	rjmp	.+50     	; 0x5a <__bad_interrupt>
-  28:	18 c0       	rjmp	.+48     	; 0x5a <__bad_interrupt>
-  2a:	17 c0       	rjmp	.+46     	; 0x5a <__bad_interrupt>
-  2c:	16 c0       	rjmp	.+44     	; 0x5a <__bad_interrupt>
-  2e:	15 c0       	rjmp	.+42     	; 0x5a <__bad_interrupt>
-  30:	14 c0       	rjmp	.+40     	; 0x5a <__bad_interrupt>
-  32:	13 c0       	rjmp	.+38     	; 0x5a <__bad_interrupt>
+   0:	29 c0       	rjmp	.+82     	; 0x54 <__ctors_end>
+   2:	43 c0       	rjmp	.+134    	; 0x8a <__bad_interrupt>
+   4:	42 c0       	rjmp	.+132    	; 0x8a <__bad_interrupt>
+   6:	41 c0       	rjmp	.+130    	; 0x8a <__bad_interrupt>
+   8:	40 c0       	rjmp	.+128    	; 0x8a <__bad_interrupt>
+   a:	07 c1       	rjmp	.+526    	; 0x21a <__vector_5>
+   c:	3e c0       	rjmp	.+124    	; 0x8a <__bad_interrupt>
+   e:	3d c0       	rjmp	.+122    	; 0x8a <__bad_interrupt>
+  10:	3c c0       	rjmp	.+120    	; 0x8a <__bad_interrupt>
+  12:	3b c0       	rjmp	.+118    	; 0x8a <__bad_interrupt>
+  14:	3a c0       	rjmp	.+116    	; 0x8a <__bad_interrupt>
+  16:	39 c0       	rjmp	.+114    	; 0x8a <__bad_interrupt>
+  18:	38 c0       	rjmp	.+112    	; 0x8a <__bad_interrupt>
+  1a:	37 c0       	rjmp	.+110    	; 0x8a <__bad_interrupt>
+  1c:	36 c0       	rjmp	.+108    	; 0x8a <__bad_interrupt>
+  1e:	35 c0       	rjmp	.+106    	; 0x8a <__bad_interrupt>
+  20:	34 c0       	rjmp	.+104    	; 0x8a <__bad_interrupt>
+  22:	33 c0       	rjmp	.+102    	; 0x8a <__bad_interrupt>
+  24:	ba c0       	rjmp	.+372    	; 0x19a <__vector_18>
+  26:	31 c0       	rjmp	.+98     	; 0x8a <__bad_interrupt>
+  28:	30 c0       	rjmp	.+96     	; 0x8a <__bad_interrupt>
+  2a:	2f c0       	rjmp	.+94     	; 0x8a <__bad_interrupt>
+  2c:	2e c0       	rjmp	.+92     	; 0x8a <__bad_interrupt>
+  2e:	2d c0       	rjmp	.+90     	; 0x8a <__bad_interrupt>
+  30:	2c c0       	rjmp	.+88     	; 0x8a <__bad_interrupt>
+  32:	2b c0       	rjmp	.+86     	; 0x8a <__bad_interrupt>
+  34:	62 c0       	rjmp	.+196    	; 0xfa <debughex+0x14>
+  36:	64 c0       	rjmp	.+200    	; 0x100 <debughex+0x1a>
+  38:	66 c0       	rjmp	.+204    	; 0x106 <debughex+0x20>
+  3a:	68 c0       	rjmp	.+208    	; 0x10c <debughex+0x26>
+  3c:	6a c0       	rjmp	.+212    	; 0x112 <debughex+0x2c>
+  3e:	6c c0       	rjmp	.+216    	; 0x118 <debughex+0x32>
+  40:	6e c0       	rjmp	.+220    	; 0x11e <debughex+0x38>
+  42:	70 c0       	rjmp	.+224    	; 0x124 <debughex+0x3e>
+  44:	72 c0       	rjmp	.+228    	; 0x12a <debughex+0x44>
+  46:	74 c0       	rjmp	.+232    	; 0x130 <debughex+0x4a>
+  48:	76 c0       	rjmp	.+236    	; 0x136 <debughex+0x50>
+  4a:	78 c0       	rjmp	.+240    	; 0x13c <debughex+0x56>
+  4c:	7a c0       	rjmp	.+244    	; 0x142 <debughex+0x5c>
+  4e:	7c c0       	rjmp	.+248    	; 0x148 <debughex+0x62>
+  50:	7e c0       	rjmp	.+252    	; 0x14e <debughex+0x68>
+  52:	80 c0       	rjmp	.+256    	; 0x154 <debughex+0x6e>
 
-00000034 <__ctors_end>:
-  34:	11 24       	eor	r1, r1
-  36:	1f be       	out	0x3f, r1	; 63
-  38:	cf ef       	ldi	r28, 0xFF	; 255
-  3a:	d4 e0       	ldi	r29, 0x04	; 4
-  3c:	de bf       	out	0x3e, r29	; 62
-  3e:	cd bf       	out	0x3d, r28	; 61
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf ef       	ldi	r28, 0xFF	; 255
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
 
-00000040 <__do_copy_data>:
-  40:	11 e0       	ldi	r17, 0x01	; 1
-  42:	a0 e0       	ldi	r26, 0x00	; 0
-  44:	b1 e0       	ldi	r27, 0x01	; 1
-  46:	e0 e7       	ldi	r30, 0x70	; 112
-  48:	f1 e0       	ldi	r31, 0x01	; 1
-  4a:	02 c0       	rjmp	.+4      	; 0x50 <.do_copy_data_start>
+00000060 <__do_copy_data>:
+  60:	11 e0       	ldi	r17, 0x01	; 1
+  62:	a0 e0       	ldi	r26, 0x00	; 0
+  64:	b1 e0       	ldi	r27, 0x01	; 1
+  66:	e8 e9       	ldi	r30, 0x98	; 152
+  68:	f2 e0       	ldi	r31, 0x02	; 2
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <.do_copy_data_start>
 
-0000004c <.do_copy_data_loop>:
-  4c:	05 90       	lpm	r0, Z+
-  4e:	0d 92       	st	X+, r0
+0000006c <.do_copy_data_loop>:
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
 
-00000050 <.do_copy_data_start>:
-  50:	ae 32       	cpi	r26, 0x2E	; 46
-  52:	b1 07       	cpc	r27, r17
-  54:	d9 f7       	brne	.-10     	; 0x4c <.do_copy_data_loop>
-  56:	76 d0       	rcall	.+236    	; 0x144 <main>
-  58:	89 c0       	rjmp	.+274    	; 0x16c <_exit>
+00000070 <.do_copy_data_start>:
+  70:	aa 37       	cpi	r26, 0x7A	; 122
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <.do_copy_data_loop>
 
-0000005a <__bad_interrupt>:
-  5a:	d2 cf       	rjmp	.-92     	; 0x0 <__vectors>
+00000076 <__do_clear_bss>:
+  76:	11 e0       	ldi	r17, 0x01	; 1
+  78:	aa e7       	ldi	r26, 0x7A	; 122
+  7a:	b1 e0       	ldi	r27, 0x01	; 1
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
 
-0000005c <USART_Init>:
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ab 37       	cpi	r26, 0x7B	; 123
+  82:	b1 07       	cpc	r27, r17
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	f3 d0       	rcall	.+486    	; 0x26e <main>
+  88:	05 c1       	rjmp	.+522    	; 0x294 <_exit>
+
+0000008a <__bad_interrupt>:
+  8a:	ba cf       	rjmp	.-140    	; 0x0 <__vectors>
+
+0000008c <USART_Init>:
 void USART_Init()
 {
 	/* Init USART clock */
 	#define BAUD 9600
 	#include <util/setbaud.h>
 	UBRR0H = UBRRH_VALUE;
-  5c:	10 92 c5 00 	sts	0x00C5, r1
+  8c:	10 92 c5 00 	sts	0x00C5, r1
 	UBRR0L = UBRRL_VALUE;
-  60:	8c e0       	ldi	r24, 0x0C	; 12
-  62:	80 93 c4 00 	sts	0x00C4, r24
+  90:	8c e0       	ldi	r24, 0x0C	; 12
+  92:	80 93 c4 00 	sts	0x00C4, r24
 	#if USE_2X
 	UCSR0A |= (1 << U2X0);
-  66:	e0 ec       	ldi	r30, 0xC0	; 192
-  68:	f0 e0       	ldi	r31, 0x00	; 0
-  6a:	80 81       	ld	r24, Z
-  6c:	82 60       	ori	r24, 0x02	; 2
-  6e:	80 83       	st	Z, r24
+  96:	e0 ec       	ldi	r30, 0xC0	; 192
+  98:	f0 e0       	ldi	r31, 0x00	; 0
+  9a:	80 81       	ld	r24, Z
+  9c:	82 60       	ori	r24, 0x02	; 2
+  9e:	80 83       	st	Z, r24
 	#else
 	UCSR0A &= ~(1 << U2X0);
 	#endif
 
 	/* Enable receiver and transmitter and receive interrupt */
 	UCSR0B = _BV(RXEN0)|_BV(TXEN0)|_BV(RXCIE0);
-  70:	88 e9       	ldi	r24, 0x98	; 152
-  72:	80 93 c1 00 	sts	0x00C1, r24
+  a0:	88 e9       	ldi	r24, 0x98	; 152
+  a2:	80 93 c1 00 	sts	0x00C1, r24
 
 	/* Set frame format: 8data, 1stop bit */
 	UCSR0C = (0<<USBS0)|(3<<UCSZ00);
-  76:	86 e0       	ldi	r24, 0x06	; 6
-  78:	80 93 c2 00 	sts	0x00C2, r24
+  a6:	86 e0       	ldi	r24, 0x06	; 6
+  a8:	80 93 c2 00 	sts	0x00C2, r24
 }
-  7c:	08 95       	ret
+  ac:	08 95       	ret
 
-0000007e <USART_Transmit>:
+000000ae <USART_Transmit>:
 
 void USART_Transmit(unsigned char data)
 {
-  7e:	98 2f       	mov	r25, r24
+  ae:	98 2f       	mov	r25, r24
 	/* Wait for empty transmit buffer */
 	while (!(UCSR0A & _BV(UDRE0)));
-  80:	80 91 c0 00 	lds	r24, 0x00C0
-  84:	85 ff       	sbrs	r24, 5
-  86:	fc cf       	rjmp	.-8      	; 0x80 <USART_Transmit+0x2>
+  b0:	80 91 c0 00 	lds	r24, 0x00C0
+  b4:	85 ff       	sbrs	r24, 5
+  b6:	fc cf       	rjmp	.-8      	; 0xb0 <USART_Transmit+0x2>
 	/* Put data into buffer, sends the data */
 	UDR0 = data;
-  88:	90 93 c6 00 	sts	0x00C6, r25
+  b8:	90 93 c6 00 	sts	0x00C6, r25
 }
-  8c:	08 95       	ret
+  bc:	08 95       	ret
 
-0000008e <USART_Receive>:
+000000be <USART_Receive>:
 
 unsigned char USART_Receive()
 {
 	/* Wait for data to be received */
 	while (!(UCSR0A & _BV(RXC0)));
-  8e:	80 91 c0 00 	lds	r24, 0x00C0
-  92:	87 ff       	sbrs	r24, 7
-  94:	fc cf       	rjmp	.-8      	; 0x8e <USART_Receive>
+  be:	80 91 c0 00 	lds	r24, 0x00C0
+  c2:	87 ff       	sbrs	r24, 7
+  c4:	fc cf       	rjmp	.-8      	; 0xbe <USART_Receive>
 	/* Get and return received data from buffer */
 	return UDR0;
-  96:	80 91 c6 00 	lds	r24, 0x00C6
+  c6:	80 91 c6 00 	lds	r24, 0x00C6
 }
-  9a:	08 95       	ret
+  ca:	08 95       	ret
 
-0000009c <debug>:
+000000cc <debug>:
 
 void debug(const char *text)
 {
-  9c:	fc 01       	movw	r30, r24
-  9e:	07 c0       	rjmp	.+14     	; 0xae <debug+0x12>
+  cc:	fc 01       	movw	r30, r24
+  ce:	07 c0       	rjmp	.+14     	; 0xde <debug+0x12>
 }
 
 void USART_Transmit(unsigned char data)
 {
 	/* Wait for empty transmit buffer */
 	while (!(UCSR0A & _BV(UDRE0)));
-  a0:	80 91 c0 00 	lds	r24, 0x00C0
-  a4:	85 ff       	sbrs	r24, 5
-  a6:	fc cf       	rjmp	.-8      	; 0xa0 <debug+0x4>
+  d0:	80 91 c0 00 	lds	r24, 0x00C0
+  d4:	85 ff       	sbrs	r24, 5
+  d6:	fc cf       	rjmp	.-8      	; 0xd0 <debug+0x4>
 void debug(const char *text)
 {
 	const char *ptr = text;
 	while (*ptr != '\0')
 	{
 		USART_Transmit(*ptr++);
-  a8:	31 96       	adiw	r30, 0x01	; 1
+  d8:	31 96       	adiw	r30, 0x01	; 1
 void USART_Transmit(unsigned char data)
 {
 	/* Wait for empty transmit buffer */
 	while (!(UCSR0A & _BV(UDRE0)));
 	/* Put data into buffer, sends the data */
 	UDR0 = data;
-  aa:	90 93 c6 00 	sts	0x00C6, r25
+  da:	90 93 c6 00 	sts	0x00C6, r25
 }
 
 void debug(const char *text)
 {
 	const char *ptr = text;
 	while (*ptr != '\0')
-  ae:	90 81       	ld	r25, Z
-  b0:	99 23       	and	r25, r25
-  b2:	b1 f7       	brne	.-20     	; 0xa0 <debug+0x4>
+  de:	90 81       	ld	r25, Z
+  e0:	99 23       	and	r25, r25
+  e2:	b1 f7       	brne	.-20     	; 0xd0 <debug+0x4>
 	{
 		USART_Transmit(*ptr++);
 	}
 }
-  b4:	08 95       	ret
+  e4:	08 95       	ret
 
-000000b6 <debugln>:
+000000e6 <debughex>:
+
+void debughex(uint8_t c)
+{
+  e6:	1f 93       	push	r17
+  e8:	18 2f       	mov	r17, r24
+	switch (c)
+  ea:	e1 2f       	mov	r30, r17
+  ec:	f0 e0       	ldi	r31, 0x00	; 0
+  ee:	e0 31       	cpi	r30, 0x10	; 16
+  f0:	f1 05       	cpc	r31, r1
+  f2:	a8 f5       	brcc	.+106    	; 0x15e <debughex+0x78>
+  f4:	e6 5e       	subi	r30, 0xE6	; 230
+  f6:	ff 4f       	sbci	r31, 0xFF	; 255
+  f8:	09 94       	ijmp
+	{
+		case 0: debug("0"); break;
+  fa:	80 e0       	ldi	r24, 0x00	; 0
+  fc:	91 e0       	ldi	r25, 0x01	; 1
+  fe:	2c c0       	rjmp	.+88     	; 0x158 <debughex+0x72>
+		case 1: debug("1"); break;
+ 100:	82 e0       	ldi	r24, 0x02	; 2
+ 102:	91 e0       	ldi	r25, 0x01	; 1
+ 104:	29 c0       	rjmp	.+82     	; 0x158 <debughex+0x72>
+		case 2: debug("2"); break;
+ 106:	84 e0       	ldi	r24, 0x04	; 4
+ 108:	91 e0       	ldi	r25, 0x01	; 1
+ 10a:	26 c0       	rjmp	.+76     	; 0x158 <debughex+0x72>
+		case 3: debug("3"); break;
+ 10c:	86 e0       	ldi	r24, 0x06	; 6
+ 10e:	91 e0       	ldi	r25, 0x01	; 1
+ 110:	23 c0       	rjmp	.+70     	; 0x158 <debughex+0x72>
+		case 4: debug("4"); break;
+ 112:	88 e0       	ldi	r24, 0x08	; 8
+ 114:	91 e0       	ldi	r25, 0x01	; 1
+ 116:	20 c0       	rjmp	.+64     	; 0x158 <debughex+0x72>
+		case 5: debug("5"); break;
+ 118:	8a e0       	ldi	r24, 0x0A	; 10
+ 11a:	91 e0       	ldi	r25, 0x01	; 1
+ 11c:	1d c0       	rjmp	.+58     	; 0x158 <debughex+0x72>
+		case 6: debug("6"); break;
+ 11e:	8c e0       	ldi	r24, 0x0C	; 12
+ 120:	91 e0       	ldi	r25, 0x01	; 1
+ 122:	1a c0       	rjmp	.+52     	; 0x158 <debughex+0x72>
+		case 7: debug("7"); break;
+ 124:	8e e0       	ldi	r24, 0x0E	; 14
+ 126:	91 e0       	ldi	r25, 0x01	; 1
+ 128:	17 c0       	rjmp	.+46     	; 0x158 <debughex+0x72>
+		case 8: debug("8"); break;
+ 12a:	80 e1       	ldi	r24, 0x10	; 16
+ 12c:	91 e0       	ldi	r25, 0x01	; 1
+ 12e:	14 c0       	rjmp	.+40     	; 0x158 <debughex+0x72>
+		case 9: debug("9"); break;
+ 130:	82 e1       	ldi	r24, 0x12	; 18
+ 132:	91 e0       	ldi	r25, 0x01	; 1
+ 134:	11 c0       	rjmp	.+34     	; 0x158 <debughex+0x72>
+		case 10: debug("a"); break;
+ 136:	84 e1       	ldi	r24, 0x14	; 20
+ 138:	91 e0       	ldi	r25, 0x01	; 1
+ 13a:	0e c0       	rjmp	.+28     	; 0x158 <debughex+0x72>
+		case 11: debug("b"); break;
+ 13c:	86 e1       	ldi	r24, 0x16	; 22
+ 13e:	91 e0       	ldi	r25, 0x01	; 1
+ 140:	0b c0       	rjmp	.+22     	; 0x158 <debughex+0x72>
+		case 12: debug("c"); break;
+ 142:	88 e1       	ldi	r24, 0x18	; 24
+ 144:	91 e0       	ldi	r25, 0x01	; 1
+ 146:	08 c0       	rjmp	.+16     	; 0x158 <debughex+0x72>
+		case 13: debug("d"); break;
+ 148:	8a e1       	ldi	r24, 0x1A	; 26
+ 14a:	91 e0       	ldi	r25, 0x01	; 1
+ 14c:	05 c0       	rjmp	.+10     	; 0x158 <debughex+0x72>
+		case 14: debug("e"); break;
+ 14e:	8c e1       	ldi	r24, 0x1C	; 28
+ 150:	91 e0       	ldi	r25, 0x01	; 1
+ 152:	02 c0       	rjmp	.+4      	; 0x158 <debughex+0x72>
+		case 15: debug("f"); break;
+ 154:	8e e1       	ldi	r24, 0x1E	; 30
+ 156:	91 e0       	ldi	r25, 0x01	; 1
+ 158:	b9 df       	rcall	.-142    	; 0xcc <debug>
+		default:
+			debughex(c >> 8);
+			debughex(c & 0x0f);	
+			break;
+	}
+}
+ 15a:	1f 91       	pop	r17
+ 15c:	08 95       	ret
+		case 12: debug("c"); break;
+		case 13: debug("d"); break;
+		case 14: debug("e"); break;
+		case 15: debug("f"); break;
+		default:
+			debughex(c >> 8);
+ 15e:	80 e0       	ldi	r24, 0x00	; 0
+ 160:	c2 df       	rcall	.-124    	; 0xe6 <debughex>
+			debughex(c & 0x0f);	
+ 162:	1f 70       	andi	r17, 0x0F	; 15
+ 164:	c2 cf       	rjmp	.-124    	; 0xea <debughex+0x4>
+
+00000166 <debugln>:
+	}
+}
 
 void debugln(const char *text)
 {
 	debug(text);
-  b6:	f2 df       	rcall	.-28     	; 0x9c <debug>
+ 166:	b2 df       	rcall	.-156    	; 0xcc <debug>
 }
 
 void USART_Transmit(unsigned char data)
 {
 	/* Wait for empty transmit buffer */
 	while (!(UCSR0A & _BV(UDRE0)));
-  b8:	80 91 c0 00 	lds	r24, 0x00C0
-  bc:	85 ff       	sbrs	r24, 5
-  be:	fc cf       	rjmp	.-8      	; 0xb8 <debugln+0x2>
+ 168:	80 91 c0 00 	lds	r24, 0x00C0
+ 16c:	85 ff       	sbrs	r24, 5
+ 16e:	fc cf       	rjmp	.-8      	; 0x168 <debugln+0x2>
 	/* Put data into buffer, sends the data */
 	UDR0 = data;
-  c0:	8d e0       	ldi	r24, 0x0D	; 13
-  c2:	80 93 c6 00 	sts	0x00C6, r24
+ 170:	8d e0       	ldi	r24, 0x0D	; 13
+ 172:	80 93 c6 00 	sts	0x00C6, r24
 }
 
 void USART_Transmit(unsigned char data)
 {
 	/* Wait for empty transmit buffer */
 	while (!(UCSR0A & _BV(UDRE0)));
-  c6:	80 91 c0 00 	lds	r24, 0x00C0
-  ca:	85 ff       	sbrs	r24, 5
-  cc:	fc cf       	rjmp	.-8      	; 0xc6 <debugln+0x10>
+ 176:	80 91 c0 00 	lds	r24, 0x00C0
+ 17a:	85 ff       	sbrs	r24, 5
+ 17c:	fc cf       	rjmp	.-8      	; 0x176 <debugln+0x10>
 	/* Put data into buffer, sends the data */
 	UDR0 = data;
-  ce:	8a e0       	ldi	r24, 0x0A	; 10
-  d0:	80 93 c6 00 	sts	0x00C6, r24
+ 17e:	8a e0       	ldi	r24, 0x0A	; 10
+ 180:	80 93 c6 00 	sts	0x00C6, r24
 void debugln(const char *text)
 {
 	debug(text);
 	USART_Transmit('\r');
 	USART_Transmit('\n');
 }
-  d4:	08 95       	ret
+ 184:	08 95       	ret
 
-000000d6 <__vector_18>:
+00000186 <toggleButton>:
+
+void toggleButton()
+{
+	buttonOutput = (buttonOutput == 0x00) ? 0x01 : 0x00;
+ 186:	90 e0       	ldi	r25, 0x00	; 0
+ 188:	80 91 7a 01 	lds	r24, 0x017A
+ 18c:	88 23       	and	r24, r24
+ 18e:	09 f4       	brne	.+2      	; 0x192 <toggleButton+0xc>
+ 190:	91 e0       	ldi	r25, 0x01	; 1
+ 192:	90 93 7a 01 	sts	0x017A, r25
+	PORTB = buttonOutput;
+ 196:	95 b9       	out	0x05, r25	; 5
+}
+ 198:	08 95       	ret
+
+0000019a <__vector_18>:
 
 ISR(USART_RX_vect)
 {
-  d6:	1f 92       	push	r1
-  d8:	0f 92       	push	r0
-  da:	0f b6       	in	r0, 0x3f	; 63
-  dc:	0f 92       	push	r0
-  de:	11 24       	eor	r1, r1
-  e0:	2f 93       	push	r18
-  e2:	3f 93       	push	r19
-  e4:	4f 93       	push	r20
-  e6:	5f 93       	push	r21
-  e8:	6f 93       	push	r22
-  ea:	7f 93       	push	r23
-  ec:	8f 93       	push	r24
-  ee:	9f 93       	push	r25
-  f0:	af 93       	push	r26
-  f2:	bf 93       	push	r27
-  f4:	ef 93       	push	r30
-  f6:	ff 93       	push	r31
+ 19a:	1f 92       	push	r1
+ 19c:	0f 92       	push	r0
+ 19e:	0f b6       	in	r0, 0x3f	; 63
+ 1a0:	0f 92       	push	r0
+ 1a2:	11 24       	eor	r1, r1
+ 1a4:	2f 93       	push	r18
+ 1a6:	3f 93       	push	r19
+ 1a8:	4f 93       	push	r20
+ 1aa:	5f 93       	push	r21
+ 1ac:	6f 93       	push	r22
+ 1ae:	7f 93       	push	r23
+ 1b0:	8f 93       	push	r24
+ 1b2:	9f 93       	push	r25
+ 1b4:	af 93       	push	r26
+ 1b6:	bf 93       	push	r27
+ 1b8:	ef 93       	push	r30
+ 1ba:	ff 93       	push	r31
 }
 
 unsigned char USART_Receive()
 {
 	/* Wait for data to be received */
 	while (!(UCSR0A & _BV(RXC0)));
-  f8:	80 91 c0 00 	lds	r24, 0x00C0
-  fc:	87 ff       	sbrs	r24, 7
-  fe:	fc cf       	rjmp	.-8      	; 0xf8 <__vector_18+0x22>
+ 1bc:	80 91 c0 00 	lds	r24, 0x00C0
+ 1c0:	87 ff       	sbrs	r24, 7
+ 1c2:	fc cf       	rjmp	.-8      	; 0x1bc <__vector_18+0x22>
 	/* Get and return received data from buffer */
 	return UDR0;
- 100:	90 91 c6 00 	lds	r25, 0x00C6
+ 1c4:	90 91 c6 00 	lds	r25, 0x00C6
 }
 
 ISR(USART_RX_vect)
 {
 	unsigned char c = USART_Receive();
 	if (c == '\r')
- 104:	9d 30       	cpi	r25, 0x0D	; 13
- 106:	39 f4       	brne	.+14     	; 0x116 <__vector_18+0x40>
+ 1c8:	9d 30       	cpi	r25, 0x0D	; 13
+ 1ca:	81 f4       	brne	.+32     	; 0x1ec <__vector_18+0x52>
+	USART_Transmit('\n');
+}
+
+void toggleButton()
+{
+	buttonOutput = (buttonOutput == 0x00) ? 0x01 : 0x00;
+ 1cc:	90 e0       	ldi	r25, 0x00	; 0
+ 1ce:	80 91 7a 01 	lds	r24, 0x017A
+ 1d2:	88 23       	and	r24, r24
+ 1d4:	09 f4       	brne	.+2      	; 0x1d8 <__vector_18+0x3e>
+ 1d6:	91 e0       	ldi	r25, 0x01	; 1
+ 1d8:	90 93 7a 01 	sts	0x017A, r25
+	PORTB = buttonOutput;
+ 1dc:	95 b9       	out	0x05, r25	; 5
+{
+	unsigned char c = USART_Receive();
+	if (c == '\r')
 	{
+		toggleButton();
 		debugln("");
- 108:	80 e0       	ldi	r24, 0x00	; 0
- 10a:	91 e0       	ldi	r25, 0x01	; 1
- 10c:	d4 df       	rcall	.-88     	; 0xb6 <debugln>
+ 1de:	80 e2       	ldi	r24, 0x20	; 32
+ 1e0:	91 e0       	ldi	r25, 0x01	; 1
+ 1e2:	c1 df       	rcall	.-126    	; 0x166 <debugln>
 		debugln("OK.");
- 10e:	81 e0       	ldi	r24, 0x01	; 1
- 110:	91 e0       	ldi	r25, 0x01	; 1
- 112:	d1 df       	rcall	.-94     	; 0xb6 <debugln>
- 114:	06 c0       	rjmp	.+12     	; 0x122 <__vector_18+0x4c>
+ 1e4:	81 e2       	ldi	r24, 0x21	; 33
+ 1e6:	91 e0       	ldi	r25, 0x01	; 1
+ 1e8:	be df       	rcall	.-132    	; 0x166 <debugln>
+ 1ea:	06 c0       	rjmp	.+12     	; 0x1f8 <__vector_18+0x5e>
 }
 
 void USART_Transmit(unsigned char data)
 {
 	/* Wait for empty transmit buffer */
 	while (!(UCSR0A & _BV(UDRE0)));
- 116:	80 91 c0 00 	lds	r24, 0x00C0
- 11a:	85 ff       	sbrs	r24, 5
- 11c:	fc cf       	rjmp	.-8      	; 0x116 <__vector_18+0x40>
+ 1ec:	80 91 c0 00 	lds	r24, 0x00C0
+ 1f0:	85 ff       	sbrs	r24, 5
+ 1f2:	fc cf       	rjmp	.-8      	; 0x1ec <__vector_18+0x52>
 	/* Put data into buffer, sends the data */
 	UDR0 = data;
- 11e:	90 93 c6 00 	sts	0x00C6, r25
+ 1f4:	90 93 c6 00 	sts	0x00C6, r25
 	}
 	else
 	{
 		USART_Transmit(c);
 	}
 }
- 122:	ff 91       	pop	r31
- 124:	ef 91       	pop	r30
- 126:	bf 91       	pop	r27
- 128:	af 91       	pop	r26
- 12a:	9f 91       	pop	r25
- 12c:	8f 91       	pop	r24
- 12e:	7f 91       	pop	r23
- 130:	6f 91       	pop	r22
- 132:	5f 91       	pop	r21
- 134:	4f 91       	pop	r20
- 136:	3f 91       	pop	r19
- 138:	2f 91       	pop	r18
- 13a:	0f 90       	pop	r0
- 13c:	0f be       	out	0x3f, r0	; 63
- 13e:	0f 90       	pop	r0
- 140:	1f 90       	pop	r1
- 142:	18 95       	reti
+ 1f8:	ff 91       	pop	r31
+ 1fa:	ef 91       	pop	r30
+ 1fc:	bf 91       	pop	r27
+ 1fe:	af 91       	pop	r26
+ 200:	9f 91       	pop	r25
+ 202:	8f 91       	pop	r24
+ 204:	7f 91       	pop	r23
+ 206:	6f 91       	pop	r22
+ 208:	5f 91       	pop	r21
+ 20a:	4f 91       	pop	r20
+ 20c:	3f 91       	pop	r19
+ 20e:	2f 91       	pop	r18
+ 210:	0f 90       	pop	r0
+ 212:	0f be       	out	0x3f, r0	; 63
+ 214:	0f 90       	pop	r0
+ 216:	1f 90       	pop	r1
+ 218:	18 95       	reti
 
-00000144 <main>:
+0000021a <__vector_5>:
+
+ISR(PCINT2_vect)
+{
+ 21a:	1f 92       	push	r1
+ 21c:	0f 92       	push	r0
+ 21e:	0f b6       	in	r0, 0x3f	; 63
+ 220:	0f 92       	push	r0
+ 222:	11 24       	eor	r1, r1
+ 224:	2f 93       	push	r18
+ 226:	3f 93       	push	r19
+ 228:	4f 93       	push	r20
+ 22a:	5f 93       	push	r21
+ 22c:	6f 93       	push	r22
+ 22e:	7f 93       	push	r23
+ 230:	8f 93       	push	r24
+ 232:	9f 93       	push	r25
+ 234:	af 93       	push	r26
+ 236:	bf 93       	push	r27
+ 238:	ef 93       	push	r30
+ 23a:	ff 93       	push	r31
+	uint8_t in = (PIND >> 2) & 0x1;
+	if (in)
+ 23c:	4a 9b       	sbis	0x09, 2	; 9
+ 23e:	03 c0       	rjmp	.+6      	; 0x246 <__vector_5+0x2c>
+	{
+		debugln("button 1 released");
+ 240:	85 e2       	ldi	r24, 0x25	; 37
+ 242:	91 e0       	ldi	r25, 0x01	; 1
+ 244:	02 c0       	rjmp	.+4      	; 0x24a <__vector_5+0x30>
+	}
+	else
+	{
+		debugln("button 1 pushed");
+ 246:	87 e3       	ldi	r24, 0x37	; 55
+ 248:	91 e0       	ldi	r25, 0x01	; 1
+ 24a:	8d df       	rcall	.-230    	; 0x166 <debugln>
+	}
+}
+ 24c:	ff 91       	pop	r31
+ 24e:	ef 91       	pop	r30
+ 250:	bf 91       	pop	r27
+ 252:	af 91       	pop	r26
+ 254:	9f 91       	pop	r25
+ 256:	8f 91       	pop	r24
+ 258:	7f 91       	pop	r23
+ 25a:	6f 91       	pop	r22
+ 25c:	5f 91       	pop	r21
+ 25e:	4f 91       	pop	r20
+ 260:	3f 91       	pop	r19
+ 262:	2f 91       	pop	r18
+ 264:	0f 90       	pop	r0
+ 266:	0f be       	out	0x3f, r0	; 63
+ 268:	0f 90       	pop	r0
+ 26a:	1f 90       	pop	r1
+ 26c:	18 95       	reti
+
+0000026e <main>:
 
 int main(void)
 {
-	/* USART is on port D */
+	/* USART is on port D, pins 1-0 */
 	USART_Init();
- 144:	8b df       	rcall	.-234    	; 0x5c <USART_Init>
+ 26e:	0e df       	rcall	.-484    	; 0x8c <USART_Init>
 
-	/* port B is button1out (bit 0) & button1in (bit1) */ 
-	DDRB = 0x01; 
- 146:	81 e0       	ldi	r24, 0x01	; 1
- 148:	84 b9       	out	0x04, r24	; 4
-	PORTB = 0;
- 14a:	15 b8       	out	0x05, r1	; 5
+	/* button inputs are on port D, pins 7-2 */
+	DDRD = 0x00; // 0=input 1=output
+ 270:	1a b8       	out	0x0a, r1	; 10
+	PORTD = 0xfc; // pull-up resistors
+ 272:	8c ef       	ldi	r24, 0xFC	; 252
+ 274:	8b b9       	out	0x0b, r24	; 11
+	PCMSK2 = _BV(PCINT18); // enable PCINT18 (port B pin 2) contribution to PCINT2 interrupt
+ 276:	84 e0       	ldi	r24, 0x04	; 4
+ 278:	80 93 6d 00 	sts	0x006D, r24
+	PCICR = _BV(PCIE2); // enable PCINT2 interrupt
+ 27c:	80 93 68 00 	sts	0x0068, r24
+
+	/* button input is on port B */ 
+	DDRB = 0xff; // 0=input 1=output
+ 280:	8f ef       	ldi	r24, 0xFF	; 255
+ 282:	84 b9       	out	0x04, r24	; 4
 
 	debugln("Booting Erhune's super-giga-autofire...");
- 14c:	85 e0       	ldi	r24, 0x05	; 5
- 14e:	91 e0       	ldi	r25, 0x01	; 1
- 150:	b2 df       	rcall	.-156    	; 0xb6 <debugln>
+ 284:	87 e4       	ldi	r24, 0x47	; 71
+ 286:	91 e0       	ldi	r25, 0x01	; 1
+ 288:	6e df       	rcall	.-292    	; 0x166 <debugln>
+	debugln("...booted!");
+ 28a:	8f e6       	ldi	r24, 0x6F	; 111
+ 28c:	91 e0       	ldi	r25, 0x01	; 1
+ 28e:	6b df       	rcall	.-298    	; 0x166 <debugln>
 
 	sei();
- 152:	78 94       	sei
- 154:	80 e1       	ldi	r24, 0x10	; 16
- 156:	97 e2       	ldi	r25, 0x27	; 39
-    milliseconds can be achieved.
- */
-void
-_delay_loop_2(uint16_t __count)
-{
-	__asm__ volatile (
- 158:	29 e1       	ldi	r18, 0x19	; 25
- 15a:	30 e0       	ldi	r19, 0x00	; 0
- 15c:	f9 01       	movw	r30, r18
- 15e:	31 97       	sbiw	r30, 0x01	; 1
- 160:	f1 f7       	brne	.-4      	; 0x15e <main+0x1a>
-		__ticks = (uint16_t) (__ms * 10.0);
-		while(__ticks)
-		{
-			// wait 1/10 ms
-			_delay_loop_2(((F_CPU) / 4e3) / 10);
-			__ticks --;
- 162:	01 97       	sbiw	r24, 0x01	; 1
-		__ticks = 1;
-	else if (__tmp > 65535)
-	{
-		//	__ticks = requested delay in 1/10 ms
-		__ticks = (uint16_t) (__ms * 10.0);
-		while(__ticks)
- 164:	d9 f7       	brne	.-10     	; 0x15c <main+0x18>
- 166:	80 e1       	ldi	r24, 0x10	; 16
- 168:	97 e2       	ldi	r25, 0x27	; 39
- 16a:	f8 cf       	rjmp	.-16     	; 0x15c <main+0x18>
+ 290:	78 94       	sei
+ 292:	ff cf       	rjmp	.-2      	; 0x292 <main+0x24>
 
-0000016c <_exit>:
- 16c:	f8 94       	cli
+00000294 <_exit>:
+ 294:	f8 94       	cli
 
-0000016e <__stop_program>:
- 16e:	ff cf       	rjmp	.-2      	; 0x16e <__stop_program>
+00000296 <__stop_program>:
+ 296:	ff cf       	rjmp	.-2      	; 0x296 <__stop_program>
