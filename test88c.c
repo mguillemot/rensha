@@ -3,6 +3,8 @@
 #include <util/delay.h>
 #include "usart.h"
 
+#define nop()  __asm__ __volatile__("nop")
+
 uint16_t timer1overflows = 0;
 
 uint32_t getCurrentTime()
@@ -13,46 +15,43 @@ uint32_t getCurrentTime()
 	return res; 
 }
 
-#define VSYNC_HISTORY_SIZE 16
-uint32_t vsyncHistory[VSYNC_HISTORY_SIZE];
-uint8_t nextVsyncHistory = 0;
+uint16_t vsyncCount = 0;
+uint32_t lastVsync = 0;
+uint32_t lastVsyncDelta = 0;
+
+uint32_t bbpCount = 0;
+uint32_t lastBbp = 0;
+uint32_t lastBbpDelta = 0;
 
 void reportVsyncToHistory()
 {
-	vsyncHistory[nextVsyncHistory++] = getCurrentTime();
-	if (nextVsyncHistory == VSYNC_HISTORY_SIZE)
-	{
-		nextVsyncHistory = 0;
-	}
+	uint32_t now = getCurrentTime();
+	lastVsyncDelta = now - lastVsync;
+	lastVsync = now;
+	vsyncCount++;
+}
+
+void reportBbpToHistory()
+{
+	uint32_t now = getCurrentTime();
+	lastBbpDelta = now - lastBbp;
+	lastBbp = now;
+	bbpCount++;
 }
 
 uint16_t computeFps()
 {
-	uint32_t first = vsyncHistory[nextVsyncHistory];
-	uint32_t last = (nextVsyncHistory > 0) ? vsyncHistory[nextVsyncHistory - 1] : vsyncHistory[VSYNC_HISTORY_SIZE - 1];
-	double averageDeltaT = 0;
-	/*for (uint8_t i = 0; i < VSYNC_HISTORY_SIZE; i++)
-	{
-		printf("%u %08ld\n", i, vsyncHistory[i]);
-	}*/
-	averageDeltaT = (last - first) / (VSYNC_HISTORY_SIZE - 1);
-	averageDeltaT *= 64; // prescaler
 	double fps = F_CPU;
-	fps /= averageDeltaT;
+	fps /= lastVsyncDelta * 64; // 64 = prescaler
 	return (uint16_t) (fps * 1000.0);
 }
 
-uint8_t buttonStatus = 0x00;
-uint16_t previousTimer = 0;
+//uint8_t buttonStatus = 0x00;
 
 void updateOutput()
 {	
-	uint8_t in = (PIND >> 2) & 0x1;
-	uint16_t timer = TCNT1;
-	int16_t delta = timer - previousTimer;
-	//if (delta > 220)
-		printf("%u,%d,%d\n", timer, delta, in);
-	previousTimer = timer;
+	//buttonStatus = (buttonStatus == 0) ? 1 : 0;
+	//PORTB = buttonStatus;
 	/*if (in == buttonStatus)
 	{
 		printf("%u | no change in button 1 status\n", timer); // should not happen
@@ -87,10 +86,36 @@ ISR(PCINT2_vect)
 	//printf("%u,%d\n", timer, vsync);
 }
 
+uint16_t line = 0;
+
 /* interrupt vector for VSYNC detection */
 ISR(INT0_vect)
 {
 	reportVsyncToHistory();
+
+	line = 0;
+}
+
+/* interrupt vector for Bust / Back Porch detection */
+ISR(INT1_vect)
+{
+	line++;
+	_delay_us(15);
+	if (line > 50 && line <= 100)
+	{
+		PORTB = 1;
+		nop();
+		nop();
+		PORTB = 0;
+		nop();
+		nop();
+		PORTB = 1;
+		nop();
+		nop();
+	}
+	PORTB = 0;
+
+	reportBbpToHistory();
 }
 
 /* interrupt vector for timer 1 overflow */
@@ -109,10 +134,13 @@ int main(void)
 	EICRA |= _BV(ISC01); // trigger INT0 on falling edge of signal
 	EIMSK |= _BV(INT0); // enable INT0
 
-	/* button inputs are on port D, pins 7-3 */
+	/* Bust / Back Porch detection is on port D, pin 3 (INT1) */
+	EICRA |= _BV(ISC11); // trigger INT1 on falling edge of signal
+	EIMSK |= _BV(INT1); // enable INT1
+
+	/* button inputs are on port D, pins 7-4 */
 	DDRD = 0x00; // 0=input 1=output
-	PORTD = 0b11111000; // pull-up resistors on pins 7-3
-	//PCMSK2 |= _BV(PCINT19); // enable port D pin 3 contribution to PCINT2 interrupt
+	PORTD = 0b11110000; // pull-up resistors on pins 7-4
 	//PCMSK2 |= _BV(PCINT20); // enable port D pin 4 contribution to PCINT2 interrupt
 	//PCMSK2 |= _BV(PCINT21); // enable port D pin 5 contribution to PCINT2 interrupt
 	//PCMSK2 |= _BV(PCINT22); // enable port D pin 6 contribution to PCINT2 interrupt
@@ -123,17 +151,17 @@ int main(void)
 
 	/* timer 1 */
 	TCCR1B |= _BV(CS11) | _BV(CS10); // enabled with div64 prescaleer
-	TIMSK1 |= _BV(TOIE1); // Overflow Interrupt Enable
+	//TIMSK1 |= _BV(TOIE1); // Overflow Interrupt Enable
 
 	printf("Booting...\n");
-
 	sei();
 	while(1)
 	{
 		// waiting for interrupts...
 
 		_delay_ms(1000);
-		printf("%u fps\n", computeFps());
+		uint16_t fps = computeFps();
+		printf("%u.%03u fps, %d, %ld\n", fps/1000, fps%1000, vsyncCount, lastBbpDelta);
 		
 		/*
 		uint16_t timer = TCNT1;
