@@ -54,6 +54,7 @@ static int uart_putchar(char c, FILE *stream)
     return 0;
 }
 
+/* interrupt vector for USART data reception */
 ISR(USART_RX_vect)
 {
 	uint8_t c = USART_Receive();
