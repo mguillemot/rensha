@@ -40,7 +40,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 LIBS = -lc -lm -lprintf_min 
 
 ## Objects that must be built in order to link
-OBJECTS = test88c.o usart.o 
+OBJECTS = test88c.o usart.o time.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -53,6 +53,9 @@ test88c.o: ../test88c.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 usart.o: ../usart.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+time.o: ../time.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link

@@ -2,6 +2,10 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 
+//#define ENABLE_USART_OUTPUT
+
+#ifdef ENABLE_USART_OUTPUT
+
 static int uart_putchar(char c, FILE *stream);
 
 static FILE mystdout = FDEV_SETUP_STREAM(uart_putchar, NULL, _FDEV_SETUP_WRITE);
@@ -51,7 +55,6 @@ static int uart_putchar(char c, FILE *stream)
 	if (c == '\n')
 		uart_putchar('\r', stream);
 	USART_Transmit(c);
-    return 0;
 }
 
 /* interrupt vector for USART data reception */
@@ -68,3 +71,10 @@ ISR(USART_RX_vect)
 	}
 }
 
+#else // !ENABLE_USART_OUTPUT
+
+void USART_Init()
+{
+}
+
+#endif // ENABLE_USART_OUTPUT

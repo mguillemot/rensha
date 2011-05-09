@@ -15,7 +15,8 @@ test88c.o: ../test88c.c \
   c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h \
   ../usart.h c:/winavr-20100110/lib/gcc/../../avr/include/stdio.h \
   c:\winavr-20100110\bin\../lib/gcc/avr/4.3.3/include/stdarg.h \
-  c:\winavr-20100110\bin\../lib/gcc/avr/4.3.3/include/stddef.h
+  c:\winavr-20100110\bin\../lib/gcc/avr/4.3.3/include/stddef.h ../time.h \
+  ../nop.h
 
 c:/winavr-20100110/lib/gcc/../../avr/include/avr/io.h:
 
@@ -52,3 +53,7 @@ c:/winavr-20100110/lib/gcc/../../avr/include/stdio.h:
 c:\winavr-20100110\bin\../lib/gcc/avr/4.3.3/include/stdarg.h:
 
 c:\winavr-20100110\bin\../lib/gcc/avr/4.3.3/include/stddef.h:
+
+../time.h:
+
+../nop.h:

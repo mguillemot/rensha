@@ -2,18 +2,8 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include "usart.h"
-
-#define nop()  __asm__ __volatile__("nop")
-
-uint16_t timer1overflows = 0;
-
-uint32_t getCurrentTime()
-{
-	uint32_t res = timer1overflows;
-	res <<= 16;
-	res |= TCNT1;
-	return res; 
-}
+#include "time.h"
+#include "nop.h"
 
 uint16_t vsyncCount = 0;
 uint32_t lastVsync = 0;
@@ -118,13 +108,6 @@ ISR(INT1_vect)
 	reportBbpToHistory();
 }
 
-/* interrupt vector for timer 1 overflow */
-ISR(TIMER1_OVF_vect)
-{
-	timer1overflows++;
-	//printf("now is %08lx\n", getCurrentTime());
-}
-
 int main(void)
 {
 	/* USART is on port D, pins 1-0 */
@@ -151,7 +134,7 @@ int main(void)
 
 	/* timer 1 */
 	TCCR1B |= _BV(CS11) | _BV(CS10); // enabled with div64 prescaleer
-	//TIMSK1 |= _BV(TOIE1); // Overflow Interrupt Enable
+	TIMSK1 |= _BV(TOIE1); // Overflow Interrupt Enable
 
 	printf("Booting...\n");
 	sei();
