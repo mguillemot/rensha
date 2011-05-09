@@ -1,86 +1,164 @@
-###############################################################################
-# Makefile for the project test88c
-###############################################################################
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
 
-## General Flags
-PROJECT = test88c
-MCU = atmega88
-TARGET = test88c.elf
-CC = avr-gcc
+SHELL := cmd.exe
+RM := rm -rf
 
-CPP = avr-g++
+USER_OBJS :=
 
-## Options common to compile, link and assembly rules
-COMMON = -mmcu=$(MCU)
+LIBS := -Wl,-lc -Wl,-lm -Wl,-lprintf_min 
+PROJ := 
 
-## Compile options common for all C compilation units.
-CFLAGS = $(COMMON)
-CFLAGS += -Wall -gdwarf-2 -std=gnu99                     -DF_CPU=20000000UL -Os -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
-CFLAGS += -MD -MP -MT $(*F).o -MF dep/$(@F).d 
+O_SRCS := 
+C_SRCS := 
+S_SRCS := 
+S_UPPER_SRCS := 
+OBJ_SRCS := 
+ASM_SRCS := 
+PREPROCESSING_SRCS := 
+OBJS := 
+OBJS_AS_ARGS := 
+C_DEPS := 
+C_DEPS_AS_ARGS := 
+EXECUTABLES := 
+LIB_AS_ARGS :=
+OUTPUT_FILE_PATH :=
+OUTPUT_FILE_PATH_AS_ARGS :=
+HEX_FLASH_FILE_PATH :=
+HEX_FLASH_FILE_PATH_AS_ARGS :=
+HEX_EEPROM_FILE_PATH :=
+HEX_EEPROM_FILE_PATH_AS_ARGS :=
+LSS_FILE_PATH :=
+LSS_FILE_PATH_AS_ARGS :=
+MAP_FILE_PATH :=
+MAP_FILE_PATH_AS_ARGS :=
+AVR_APP_PATH :=C:/Program Files (x86)/Atmel/AVR Studio 5.0/extensions/Application/Avr ToolChain/bin/
+QUOTE := "
+ADDITIONAL_DEPENDENCIES:=
+OUTPUT_FILE_DEP:=
 
-## Assembly specific flags
-ASMFLAGS = $(COMMON)
-ASMFLAGS += $(CFLAGS)
-ASMFLAGS += -x assembler-with-cpp -Wa,-gdwarf2
-
-## Linker flags
-LDFLAGS = $(COMMON)
-LDFLAGS +=  -Wl,-Map=test88c.map
+# Every subdirectory with source files must be described here
+SUBDIRS := 
 
 
-## Intel Hex file production flags
-HEX_FLASH_FLAGS = -R .eeprom -R .fuse -R .lock -R .signature
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS +=  \
+../test88c.c \
+../usart.c \
+../time.c
 
-HEX_EEPROM_FLAGS = -j .eeprom
-HEX_EEPROM_FLAGS += --set-section-flags=.eeprom="alloc,load"
-HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
+
+PREPROCESSING_SRCS += 
 
 
-## Libraries
-LIBS = -lc -lm -lprintf_min 
+ASM_SRCS += 
 
-## Objects that must be built in order to link
-OBJECTS = test88c.o usart.o time.o 
 
-## Objects explicitly added by the user
-LINKONLYOBJECTS = 
+OBJS +=  \
+test88c.o \
+usart.o \
+time.o
 
-## Build
-all: $(TARGET) test88c.hex test88c.eep test88c.lss size
 
-## Compile
-test88c.o: ../test88c.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+OBJS_AS_ARGS +=  \
+test88c.o \
+usart.o \
+time.o
 
-usart.o: ../usart.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-time.o: ../time.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+C_DEPS +=  \
+test88c.d \
+usart.d \
+time.d
 
-##Link
-$(TARGET): $(OBJECTS)
-	 $(CC) $(LDFLAGS) $(OBJECTS) $(LINKONLYOBJECTS) $(LIBDIRS) $(LIBS) -o $(TARGET)
 
-%.hex: $(TARGET)
-	avr-objcopy -O ihex $(HEX_FLASH_FLAGS)  $< $@
+C_DEPS_AS_ARGS +=  \
+test88c.d \
+usart.d \
+time.d
 
-%.eep: $(TARGET)
-	-avr-objcopy $(HEX_EEPROM_FLAGS) -O ihex $< $@ || exit 0
 
-%.lss: $(TARGET)
-	avr-objdump -h -S $< > $@
+OUTPUT_FILE_PATH +=test88c.elf
 
-size: ${TARGET}
-	@echo
-	@avr-size -C --mcu=${MCU} ${TARGET}
+OUTPUT_FILE_PATH_AS_ARGS +=test88c.elf
 
-## Clean target
-.PHONY: clean
+HEX_FLASH_FILE_PATH +=test88c.hex
+
+HEX_FLASH_FILE_PATH_AS_ARGS +=test88c.hex
+
+HEX_EEPROM_FILE_PATH +=test88c.eep
+
+HEX_EEPROM_FILE_PATH_AS_ARGS +=test88c.eep
+
+LSS_FILE_PATH +=test88c.lss
+
+LSS_FILE_PATH_AS_ARGS +=test88c.lss
+
+MAP_FILE_PATH =test88c.map
+
+MAP_FILE_PATH_AS_ARGS =test88c.map
+
+LIB_AS_ARGS +=libtest88c.a
+
+ADDITIONAL_DEPENDENCIES:= size
+
+OUTPUT_FILE_DEP:= ./Outputfile.d
+
+# AVR/GNU C Compiler
+
+
+
+
+
+
+
+./%.o: .././%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DF_CPU=20000000UL  -Os -fpack-struct -fshort-enums -Wall -c -gdwarf-2 -std=gnu99   -mmcu=atmega88   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo Finished building: $<
+
+
+
+# AVR/GNU Assembler
+
+
+
+
+ifneq ($(MAKECMDGOALS),clean)
+ifneq ($(strip $(C_DEPS)),)
+-include $(C_DEPS)
+endif
+endif
+
+# Add inputs and outputs from these tool invocations to the build variables 
+
+# All Target
+all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
+
+# AVR/GNU C Linker
+$(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP)
+	@echo Building target: $@
+	@echo Invoking: AVR/GNU C Linker
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE)  -mmcu=atmega88   -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS)
+	@echo Finished building target: $@
+
+
+
+$(HEX_FLASH_FILE_PATH): $(OUTPUT_FILE_PATH)
+	$(QUOTE)$(AVR_APP_PATH)avr-objcopy.exe$(QUOTE) -O ihex -R .eeprom -R .fuse -R .lock -R .signature  $(QUOTE)$<$(QUOTE) $(QUOTE)$@$(QUOTE)
+
+$(HEX_EEPROM_FILE_PATH): $(OUTPUT_FILE_PATH)
+	-$(QUOTE)$(AVR_APP_PATH)avr-objcopy.exe$(QUOTE) -j .eeprom --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0 --no-change-warnings -O ihex $(QUOTE)$<$(QUOTE) $(QUOTE)$@$(QUOTE) || exit 0
+
+$(LSS_FILE_PATH): $(OUTPUT_FILE_PATH)
+	$(QUOTE)$(AVR_APP_PATH)avr-objdump.exe$(QUOTE) -h -S $(QUOTE)$<$(QUOTE) > $(QUOTE)$@$(QUOTE)
+
+size: $(OUTPUT_FILE_PATH)
+	@$(QUOTE)$(AVR_APP_PATH)avr-size.exe$(QUOTE) -C --mcu=atmega88 $(OUTPUT_FILE_PATH_AS_ARGS)
+
+# Other Targets
 clean:
-	-rm -rf $(OBJECTS) test88c.elf dep/* test88c.hex test88c.eep test88c.lss test88c.map
-
-
-## Other dependencies
--include $(shell mkdir dep 2>NUL) $(wildcard dep/*)
+	-$(RM) $(OBJS_AS_ARGS)$(C_DEPS_AS_ARGS) $(EXECUTABLES) $(LIB_AS_ARGS) $(HEX_FLASH_FILE_PATH_AS_ARGS) $(HEX_EEPROM_FILE_PATH_AS_ARGS) $(LSS_FILE_PATH_AS_ARGS) $(MAP_FILE_PATH_AS_ARGS)
 
