@@ -1,7 +1,8 @@
-#ifndef __TIME_INCLUDED__
+#ifndef TIME_H_
+#define TIME_H_
 
 #include <avr/io.h>
 
 uint32_t getCurrentTime();
 
-#endif // __TIME_INCLUDED__
+#endif  TIME_H_ */

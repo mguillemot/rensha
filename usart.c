@@ -2,16 +2,11 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 
-//#define ENABLE_USART_OUTPUT
-
 #ifdef ENABLE_USART_OUTPUT
 
 static int uart_putchar(char c, FILE *stream);
 
 static FILE mystdout = FDEV_SETUP_STREAM(uart_putchar, NULL, _FDEV_SETUP_WRITE);
-
-#define BAUD 115200
-#include <util/setbaud.h>
 
 void USART_Init()
 {
@@ -71,10 +66,10 @@ ISR(USART_RX_vect)
 	}
 }
 
-#else // !ENABLE_USART_OUTPUT
+#else /* !ENABLE_USART_OUTPUT */
 
 void USART_Init()
 {
 }
 
-#endif // ENABLE_USART_OUTPUT
+#endif /* ENABLE_USART_OUTPUT */

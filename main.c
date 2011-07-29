@@ -4,6 +4,7 @@
 #include "usart.h"
 #include "time.h"
 #include "nop.h"
+#include "config.h"
 
 uint16_t vsyncCount = 0;
 uint32_t lastVsync = 0;
@@ -137,15 +138,20 @@ int main(void)
 	TIMSK1 |= _BV(TOIE1); // Overflow Interrupt Enable
 
 	printf("Booting...\n");
-	sei();
+	//sei();
+	uint8_t i = 0;
 	while(1)
 	{
-		// waiting for interrupts...
-
-		_delay_ms(1000);
-		uint16_t fps = computeFps();
-		printf("%u.%03u fps, %d, %ld\n", fps/1000, fps%1000, vsyncCount, lastBbpDelta);
+		// afficheur 16seg
+		PORTB = i++;
+		_delay_ms(5);
 		
+		// autofire:
+		/*_delay_ms(1000);
+		uint16_t fps = computeFps();
+		printf("%u.%03u fps, %d, %ld\n", fps/1000, fps%1000, vsyncCount, lastBbpDelta);*/
+
+		// what?		
 		/*
 		uint16_t timer = TCNT1;
 		uint8_t in = PIND;
