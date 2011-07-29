@@ -48,7 +48,8 @@ C_SRCS +=  \
 ../debug.c \
 ../main.c \
 ../usart.c \
-../time.c
+../time.c \
+../video.c
 
 
 PREPROCESSING_SRCS += 
@@ -62,7 +63,8 @@ autofire.o \
 debug.o \
 main.o \
 usart.o \
-time.o
+time.o \
+video.o
 
 
 OBJS_AS_ARGS +=  \
@@ -70,7 +72,8 @@ autofire.o \
 debug.o \
 main.o \
 usart.o \
-time.o
+time.o \
+video.o
 
 
 C_DEPS +=  \
@@ -78,7 +81,8 @@ autofire.d \
 debug.d \
 main.d \
 usart.d \
-time.d
+time.d \
+video.d
 
 
 C_DEPS_AS_ARGS +=  \
@@ -86,36 +90,39 @@ autofire.d \
 debug.d \
 main.d \
 usart.d \
-time.d
+time.d \
+video.d
 
 
-OUTPUT_FILE_PATH +=test88c.elf
+OUTPUT_FILE_PATH +=rensha.elf
 
-OUTPUT_FILE_PATH_AS_ARGS +=test88c.elf
+OUTPUT_FILE_PATH_AS_ARGS +=rensha.elf
 
-HEX_FLASH_FILE_PATH +=test88c.hex
+HEX_FLASH_FILE_PATH +=rensha.hex
 
-HEX_FLASH_FILE_PATH_AS_ARGS +=test88c.hex
+HEX_FLASH_FILE_PATH_AS_ARGS +=rensha.hex
 
-HEX_EEPROM_FILE_PATH +=test88c.eep
+HEX_EEPROM_FILE_PATH +=rensha.eep
 
-HEX_EEPROM_FILE_PATH_AS_ARGS +=test88c.eep
+HEX_EEPROM_FILE_PATH_AS_ARGS +=rensha.eep
 
-LSS_FILE_PATH +=test88c.lss
+LSS_FILE_PATH +=rensha.lss
 
-LSS_FILE_PATH_AS_ARGS +=test88c.lss
+LSS_FILE_PATH_AS_ARGS +=rensha.lss
 
-MAP_FILE_PATH =test88c.map
+MAP_FILE_PATH =rensha.map
 
-MAP_FILE_PATH_AS_ARGS =test88c.map
+MAP_FILE_PATH_AS_ARGS =rensha.map
 
-LIB_AS_ARGS +=libtest88c.a
+LIB_AS_ARGS +=librensha.a
 
 ADDITIONAL_DEPENDENCIES:= $(HEX_FLASH_FILE_PATH) $(LSS_FILE_PATH) $(HEX_EEPROM_FILE_PATH) size
 
 OUTPUT_FILE_DEP:= ./makedep.mk
 
 # AVR/GNU C Compiler
+
+
 
 
 

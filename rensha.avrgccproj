@@ -55,6 +55,7 @@
     <GenerateEepFile>True</GenerateEepFile>
     <GenerateMapFile>True</GenerateMapFile>
     <GenerateListFile>True</GenerateListFile>
+    <OutputFile>rensha.elf</OutputFile>
   </PropertyGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\AvrGCC.targets" />
   <ItemGroup>
@@ -88,6 +89,12 @@
       </CustomCompilationSetting>
     </Compile>
     <Compile Include="time.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="video.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="video.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
