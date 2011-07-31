@@ -80,7 +80,7 @@
     <Compile Include="time.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="nop.h">
+    <Compile Include="asm.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="usart.c">

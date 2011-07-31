@@ -1,6 +1,6 @@
-#include "usart.h"
 #include <avr/interrupt.h>
 #include <avr/io.h>
+#include "usart.h"
 
 #ifdef ENABLE_USART_OUTPUT
 
