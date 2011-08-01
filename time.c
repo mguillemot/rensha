@@ -16,3 +16,8 @@ ISR(TIMER1_OVF_vect)
 {
 	timer1overflows++;
 }
+
+void Timer_Init()
+{
+	
+}

@@ -9,55 +9,44 @@
 #include "video.h"
 #include "time.h"
 #include "asm.h"
+#include "autofire.h"
+
 
 uint16_t line = 0;
 
 #ifdef ENABLE_VSYNC_DETECTION
-uint16_t vsyncCount = 0;
+
+uint32_t vsyncCount = 0;
 uint32_t lastVsync = 0;
 uint32_t lastVsyncDelta = 0;
 
-void reportVsyncToHistory()
+void Video_Vsync_Triggered()
 {
-	uint32_t now = getCurrentTime();
+	/*uint32_t now = getCurrentTime();
 	lastVsyncDelta = now - lastVsync;
-	lastVsync = now;
+	lastVsync = now;*/
 	vsyncCount++;
-}
-
-/* interrupt vector for VSYNC detection */
-ISR(INT0_vect)
-{
-	reportVsyncToHistory();
 
 	line = 0;
+	
+	Autofire_Update(vsyncCount);
 }
 
-uint16_t computeFps()
+uint16_t Video_ComputeFps()
 {
 	double fps = F_CPU;
 	fps /= lastVsyncDelta * 64; // 64 = prescaler
 	return (uint16_t) (fps * 1000.0);
 }
-#endif
+
+#endif /* ENABLE_VSYNC_DETECTION */
 
 #ifdef ENABLE_BBP_DETECTION
-uint32_t bbpCount = 0;
-uint32_t lastBbp = 0;
-uint32_t lastBbpDelta = 0;
 
-void reportBbpToHistory()
-{
-	uint32_t now = getCurrentTime();
-	lastBbpDelta = now - lastBbp;
-	lastBbp = now;
-	bbpCount++;
-}
-
-/* interrupt vector for Burst / Back Porch detection */
-ISR(INT1_vect)
+void Video_Bbp_Triggered()
 {
 	line++;
+	
 	/*_delay_us(15);
 	if (line > 50 && line <= 100)
 	{
@@ -72,28 +61,39 @@ ISR(INT1_vect)
 		nop();
 	}
 	PORTB = 0;*/
-
-	reportBbpToHistory();
 }
-#endif
+
+#endif /* ENABLE_BBP_DETECTION */
 
 void Video_Init()
 {
 	#ifdef ENABLE_VSYNC_DETECTION
-	/* VSYNC detection is on port C, pin 6 (INT0) */
-	//EICRA |= _BV(ISC01); // trigger INT0 on falling edge of signal
-	//EIMSK |= _BV(INT0); // enable INT0
-	#endif
+	
+	/* VSYNC detection is on port C, pin 4 (PCINT12_pin) */
+	bit_clear(DDRC, _BV(4)); // input
+	bit_clear(PORTC, _BV(4));  // no pull-up
+	bit_set(PCMSK1, _BV(PCINT12)); // enable contribution to PCINT1_int
+
+	/* enable interrupt */
+	bit_set(PCICR, _BV(PCIE1)); // PCINT1_int
+	
+	#endif /* ENABLE_VSYNC_DETECTION */
 
 	#ifdef ENABLE_BBP_DETECTION
-	/* Bust / Back Porch detection is on port D, pin 3 (INT1) */
-	//EICRA |= _BV(ISC11); // trigger INT1 on falling edge of signal
-	//EIMSK |= _BV(INT1); // enable INT1
+	
+	/* Burst / Back Porch detection is on port C, pin 5 (PCINT13_pin) */
+	bit_clear(DDRC, _BV(5)); // input
+	bit_clear(PORTC, _BV(5));  // no pull-up
+	bit_set(PCMSK1, _BV(PCINT13)); // enable contribution to PCINT1_int
+
+	/* enable interrupt */
+	bit_set(PCICR, _BV(PCIE1)); // PCINT1_int
+	
+	#endif /* ENABLE_BBP_DETECTION */
 
 	/* timer 1 */
 	/*
 	TCCR1B |= _BV(CS11) | _BV(CS10); // enabled with div64 prescaleer
 	TIMSK1 |= _BV(TOIE1); // Overflow Interrupt Enable
 	*/
-	#endif
 }

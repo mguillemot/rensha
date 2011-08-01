@@ -9,8 +9,26 @@
 #include "asm.h"
 
 
+// Config: rate = full cycle every X frames
+uint8_t rate1 = 6; 
+uint8_t rate2 = 2; 
+uint8_t rate3 = 60; 
+
+uint8_t but1pushed = 0;
+uint8_t but1burst = 0;
+uint8_t but2pushed = 0;
+uint8_t but2burst = 0;
+uint8_t but3pushed = 0;
+uint8_t but3burst = 0;
+
 void Autofire_P1B1_Changed(uint8_t v)
 {
+	but1pushed = !v;
+	if (v)
+	{
+		but1burst = 1;
+	}
+	
 	if (v)
 	{
 		bit_set(PORTD, _BV(2));
@@ -23,25 +41,19 @@ void Autofire_P1B1_Changed(uint8_t v)
 
 void Autofire_P1B2_Changed(uint8_t v)
 {
+	but2pushed = !v;
 	if (v)
 	{
-		bit_set(PORTD, _BV(3));
-	}
-	else
-	{
-		bit_clear(PORTD, _BV(3));
+		but2burst = 1;
 	}
 }
 
 void Autofire_P1B3_Changed(uint8_t v)
 {
+	but3pushed = !v;
 	if (v)
 	{
-		bit_set(PORTD, _BV(4));
-	}
-	else
-	{
-		bit_clear(PORTD, _BV(4));
+		but3burst = 1;
 	}
 }
 
@@ -107,4 +119,46 @@ void Autofire_Init()
 	bit_set(PCICR, _BV(PCIE0)); // PCINT0_int
 	bit_set(PCICR, _BV(PCIE1)); // PCINT1_int
 	//bit_set(PCICR, _BV(PCIE2)); // PCINT2_int
+}
+
+void Autofire_Update(uint32_t frameCount)
+{
+	if (frameCount % 60 == 0)
+	{
+		bit_clear(PORTC, _BV(2));
+	}
+	else if (frameCount % 30 == 0)
+	{
+		bit_set(PORTC, _BV(2));
+	}
+	
+	/*if ((but1pushed || but1burst) && (frameCount % rate1 == 0))
+	{
+		bit_clear(PORTD, _BV(2));
+		but1burst = 0;
+	}
+	else
+	{
+		bit_set(PORTD, _BV(2));
+	}
+
+	if ((but2pushed || but2burst) && (frameCount % rate2 == 0))
+	{
+		bit_clear(PORTD, _BV(3));
+		but2burst = 0;
+	}
+	else
+	{
+		bit_set(PORTD, _BV(3));
+	}
+
+	if ((but3pushed || but3burst) && (frameCount % rate3 == 0))
+	{
+		bit_clear(PORTD, _BV(4));
+		but3burst = 0;
+	}
+	else
+	{
+		bit_set(PORTD, _BV(4));
+	}*/
 }

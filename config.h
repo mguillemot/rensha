@@ -5,6 +5,6 @@
 #define BAUD 115200
 
 #define ENABLE_VSYNC_DETECTION
-#define ENABLE_BBP_DETECTION
+//#define ENABLE_BBP_DETECTION
 
 #endif /* CONFIG_H_ */

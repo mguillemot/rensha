@@ -41,14 +41,32 @@ ISR(PCINT1_vect)
 	{
 		Autofire_P1START_Changed((newC >> 3) & 1);
 	}
+	#ifdef ENABLE_VSYNC_DETECTION
+	if (change & _BV(4))
+	{
+		if (!(newC & _BV(4)))
+		{
+			Video_Vsync_Triggered();
+		}
+	}
+	#endif /* ENABLE_VSYNC_DETECTION */
+	#ifdef ENABLE_BBP_DETECTION
+	if (change & _BV(5))
+	{
+		if (!(newC & _BV(5)))
+		{
+			Video_Bbp_Triggered();
+		}
+	}
+	#endif /* ENABLE_BBP_DETECTION */
 }
 
 int main(void)
 {
 	//USART_Init();
 	//printf("USART initialized.\n");
-	//Video_Init();
-	//printf("Video initialized.\n");
+	Video_Init();
+	printf("Video initialized.\n");
 	Autofire_Init();
 	printf("Autofire initialized.\n");
 
@@ -57,19 +75,13 @@ int main(void)
 	bit_set(PORTC, _BV(2));
 
 	sei();
-	uint8_t i = 0;
 	while(1)
 	{
-		i++;
-		
 		/* Blinks the LED */
-		_delay_ms(500);
+		/*_delay_ms(500);
 		bit_clear(PORTC, _BV(2));
 		_delay_ms(500);
-		bit_set(PORTC, _BV(2));
-		
-		/*uint16_t fps = computeFps();
-		printf("%u.%03u fps, %d, %ld\n", fps/1000, fps%1000, vsyncCount, lastBbpDelta);*/
+		bit_set(PORTC, _BV(2));*/
 	}		
 }
 

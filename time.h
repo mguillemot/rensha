@@ -5,4 +5,4 @@
 
 uint32_t getCurrentTime();
 
-#endif  TIME_H_ */
+#endif /* !TIME_H_ */

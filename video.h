@@ -10,11 +10,22 @@
 #define VIDEO_H_
 
 #include <avr/io.h>
+#include "config.h"
 
 void Video_Init();
 
 #ifdef ENABLE_VSYNC_DETECTION
-uint16_t computeFps();
-#endif
+
+void Video_Vsync_Triggered();
+
+uint16_t Video_ComputeFps();
+
+#endif /* ENABLE_VSYNC_DETECTION */
+
+#ifdef ENABLE_BBP_DETECTION
+
+void Video_Bbp_Triggered();
+
+#endif /* ENABLE_BBP_DETECTION */
 
 #endif /* VIDEO_H_ */

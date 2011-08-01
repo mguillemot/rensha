@@ -18,4 +18,6 @@ void Autofire_P1B2_Changed(uint8_t v);
 void Autofire_P1B3_Changed(uint8_t v);
 void Autofire_P1START_Changed(uint8_t v);
 
-#endif /* AUTOFIRE_H_ */
+void Autofire_Update(uint32_t frameCount);
+
+#endif /* !AUTOFIRE_H_ */
